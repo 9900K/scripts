@@ -1,7 +1,7 @@
-const MartinBet = 300
-const MartingCashout = 2.00
+const MartinBet = 1
+const MartingCashout = 11.00
 const lostStreak = 8
-const maxLost = 30000
+const maxLost = 2000
  
 let currentBet = 1
 let cashOut = 1.01
