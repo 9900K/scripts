@@ -1,0 +1,44 @@
+const MartinBet = 300
+const MartingCashout = 2.00
+const lostStreak = 8
+const maxLost = 30000
+ 
+let currentBet = 1
+let cashOut = 1.01
+let lostcount = 0
+let losses = 0
+let startBR = balance/100
+let curBR = balance/100
+ 
+while (true) {
+ 
+    console.log('Placing bet of', Math.round(currentBet),'bits')
+    const { multiplier, balance} = await this.bet(Math.round(currentBet)*100, cashOut)
+    curBR = balance/100
+    if(multiplier < MartingCashout){
+        if(currentBet == 1){
+            lostcount++
+            if(lostcount == lostStreak){
+                currentBet = MartinBet
+                cashOut = MartingCashout
+            }  
+        }else{
+            currentBet *= 2
+        }
+        losses = startBR-curBR
+        if(losses > maxLost){
+            startBR = curBR
+            losses = 0
+            currentBet = 1
+            console.log('Max losses reached.')
+            console.log('Resetting everything.')
+        }
+        console.log('Current losses =', losses);
+    }else{
+        currentBet = 1
+        cashOut = 1.01
+        lostcount = 0
+        losses = 0
+        startBR = curBR
+    }
+}
