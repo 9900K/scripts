@@ -1,4 +1,4 @@
-const MartinBet = 1
+const MartinBet = 2
 const MartingCashout = 11.00
 const lostStreak = 8
 const maxLost = 2000
